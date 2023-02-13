@@ -49,7 +49,7 @@ contract ERC4626EulerAdapters is ForkTest {
     uint256 public decimals;
 
     Divider public divider = Divider(AddressBook.DIVIDER_1_2_0);
-    Periphery public periphery = Periphery(AddressBook.PERIPHERY_1_4_0);
+    Periphery public periphery = Periphery(payable(AddressBook.PERIPHERY_1_4_0));
     ERC4626Factory public factory = ERC4626Factory(AddressBook.ERC4626_FACTORY);
     ERC4626Adapter public adapter;
 

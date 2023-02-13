@@ -121,7 +121,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        periphery.sponsorSeries(address(adapter), maturity, true, data);
+        periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100);
         vm.prank(bob);
@@ -154,7 +160,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (100 * tBal) / 100);
         assertApproxRewardBal(ERC20(reward).balanceOf(alice), 0);
@@ -184,7 +196,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100);
         vm.prank(bob);
@@ -233,7 +251,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100);
         vm.prank(bob);
@@ -253,7 +277,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100);
         // bob issues 40, now the pool is 40% bob and 60% alice
@@ -309,7 +339,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, tBal);
 
@@ -336,7 +372,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -375,7 +417,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -409,7 +457,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, 100);
         assertApproxRewardBal(ERC20(reward).balanceOf(alice), 0);
@@ -447,7 +501,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), newMaturity, 50 * 10**rDecimals);
         assertApproxRewardBal(ERC20(reward).balanceOf(alice), 30 * 10**rDecimals);
@@ -467,7 +527,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -514,7 +580,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         // Issue an amount equal to the users' `reconciledAmt`
         divider.issue(address(adapter), newMaturity, (60 * tBal) / 100);
@@ -557,7 +629,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -604,7 +682,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         // Issue an amount bigger than the users' `reconciledAmt`
         divider.issue(address(adapter), newMaturity, (120 * tBal) / 100);
@@ -647,7 +731,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -694,7 +784,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         // Issue an amount bigger than the users' `reconciledAmt`
         divider.issue(address(adapter), newMaturity, (30 * tBal) / 100);
@@ -737,12 +833,24 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         // alice issues on S1
         divider.issue(address(adapter), maturity, (100 * tBal) / 100);
@@ -795,7 +903,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -857,7 +971,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), newMaturity, (60 * tBal) / 100);
         vm.prank(bob);
@@ -895,7 +1015,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -946,7 +1072,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), newMaturity, (60 * tBal) / 100);
         vm.prank(bob);
@@ -980,7 +1112,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -1018,7 +1156,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         // Bob issues some target and this should represent 100% of the rewards
         // but, as Alice is still holding some YTs, she will dilute Bob's rewards
@@ -1051,7 +1195,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
         vm.prank(bob);
@@ -1089,7 +1239,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 11);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         // Bob issues some target and this should represent 100% of the shares
         // but, as Alice is still holding some YTs from previous series, she will dilute Bob's rewards
@@ -1144,7 +1300,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 12);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         // Alice issues on December Series
         divider.issue(address(adapter), maturity, (60 * tBal) / 100); // 60%
@@ -1158,7 +1320,13 @@ contract CropAdapters is TestHelper {
         uint256 newMaturity = getValidMaturity(2021, 7);
         data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address newYt) = periphery.sponsorSeries(address(adapter), newMaturity, true, data);
+        (, address newYt) = periphery.sponsorSeries(
+            address(adapter),
+            newMaturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         // Alice issues 0 on July series and she gets rewards from the December Series
         divider.issue(address(adapter), newMaturity, 0);
@@ -1267,7 +1435,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         address[] memory rewardTokens = new address[](1);
         rewardTokens[0] = address(reward);
@@ -1295,7 +1469,13 @@ contract CropAdapters is TestHelper {
         uint256 maturity = getValidMaturity(2021, 10);
         Periphery.PermitData memory data = generatePermit(bobPrivKey, address(periphery), address(stake));
         vm.prank(bob);
-        (, address yt) = periphery.sponsorSeries(address(adapter), maturity, true, data);
+        (, address yt) = periphery.sponsorSeries(
+            address(adapter),
+            maturity,
+            true,
+            data,
+            _getQuote(address(adapter), address(stake), address(stake))
+        );
 
         address[] memory rewardTokens = new address[](1);
         rewardTokens[0] = address(reward);
